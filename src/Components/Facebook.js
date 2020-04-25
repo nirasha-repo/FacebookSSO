@@ -39,8 +39,12 @@ export default class Facebook extends Component {
         console.log(error);
     }
 
-    handleError() {
-        this.setState({ hasError: true, errorMessage: "Error connecting to Facebook" });        
+    handleError(e) {
+        // check different e.status to handle errors
+
+        if(e && e.status !== "unknown") {
+            this.setState({ hasError: true, errorMessage: "Error connecting to Facebook" });  
+        }              
     }
 
     render() {
